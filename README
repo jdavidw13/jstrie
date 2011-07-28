@@ -1,0 +1,19 @@
+jstrie is a simple library for creating trie trees.  Check out tests.js for usage examples.
+
+Quick Example:
+var jstrie = require('./jstrie');
+var trieTree = jstrie.buildTrie(['hello', 'help']);
+// trieTree.h.e.l.l.o._$ and trieTree.h.e.l.p._$
+// _$ denotes a word
+
+jstrie.buildTrie(['bob'], trieTree);
+// trieTree also has trieTree.b.o.b.$
+
+var words = jstrie.getWords(trieTree);
+// ['hello', 'help', 'bob']
+
+words = jstrie.getWords(trieTree, 'h');
+// ['hello', 'help']
+
+words = jstrie.getWords(trieTree, 'bob');
+// ['bob']
