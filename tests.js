@@ -64,5 +64,26 @@ if (words.length != 0) {
     return;
 }
 
+trie = jstrie.buildTrie();
+if (!trie) {
+    console.log('Trie structure incorrect for jstrie.buildTrie()');
+    return;
+}
+
+jstrie.buildTrie(['hi'], trie);
+jstrie.setProperty(trie, 'hi', 'prop1', 7);
+var prop = jstrie.getProperty(trie, 'hi', 'prop1');
+if (7 != prop) {
+    console.log('Did not set property on word "hi" correctly');
+    return;
+}
+
+jstrie.setProperty(trie, 'notInTrie', 'prop', true);
+var prop = jstrie.getProperty(trie, 'notInTrie', 'prop');
+if (true != prop) {
+    console.log('Did not correctly set property for word that was not in trie');
+    return;
+}
+
 console.log('All Tests Passed');
 })();
